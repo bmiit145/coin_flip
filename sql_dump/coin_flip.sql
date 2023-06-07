@@ -3,7 +3,7 @@
 -- Host: localhost	Database: coin_flip
 -- ------------------------------------------------------
 -- Server version 	5.5.5-10.4.16-MariaDB
--- Date: Mon, 05 Jun 2023 08:24:04 +0200
+-- Date: Wed, 07 Jun 2023 15:59:18 +0200
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,29 +18,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `test`
+-- Table structure for table `users`
 --
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `test` (
-  `id` int(11) NOT NULL
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(250) NOT NULL,
+  `mo_no` bigint(20) NOT NULL,
+  `password` varchar(2500) NOT NULL,
+  `refferal_code` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `test`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `test` WRITE;
-/*!40000 ALTER TABLE `test` DISABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `test` VALUES (4442),(32);
-/*!40000 ALTER TABLE `test` ENABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `test` with 2 row(s)
+-- Dumped table `users` with 0 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +57,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Mon, 05 Jun 2023 08:24:04 +0200
+-- Dump completed on: Wed, 07 Jun 2023 15:59:18 +0200

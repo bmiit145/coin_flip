@@ -1,3 +1,14 @@
+<?php
+session_start();
+$connection = mysqli_connect("localhost", "root", "", "coin_flip");
+
+
+if (!isset($_SESSION['id'])) {
+    header("location: ../../auth/login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +29,7 @@
 </head>
 
 <body>
+
     <section class="header-wrap">
 
         <div class="card bg-dark text-light m-2">
@@ -43,7 +55,7 @@
         </div>
     </section>
     <section class="coin-flip-section">
-        <div class="container mt-2 mb-2" style="background-color: whitesmoke; max-width: 900px;">
+        <div class="container mt-2 mb-2" style="background-color: whitesmoke; max-width: 70%;">
             <div class="row">
                 <div class="col">
                     <div class="d-flex justify-content-between mt-1">

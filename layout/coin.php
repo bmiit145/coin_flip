@@ -12,8 +12,8 @@
 
     #coin {
         position: relative;
-        width: 15rem;
-        height: 15rem;
+        width: 10rem;
+        height: 10rem;
         margin: 10px 0rem;
         transform-style: preserve-3d;
 
