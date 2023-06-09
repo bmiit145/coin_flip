@@ -13,6 +13,10 @@ if (isset($_POST["signup"])) {
         $ins_qry = "insert into users(username ,mo_no, `password`) values('$username' , '$mo_no','$password')";
         mysqli_query($connection, $ins_qry);
         // header("location: login.php");
+        $query = "select * from users where username = '$username'";
+        $user_id = mysqli_fetch_assoc(mysqli_query($connection , $query))['id'];
+        $ins_qry = "insert into user_balance(user_id , balance ) values('$user_id' , '0.00')";
+        mysqli_query($connection , $ins_qry);
     } else {
         echo '<script> alert("User already exits...") </script>';
     }

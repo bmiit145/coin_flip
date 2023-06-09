@@ -34,7 +34,7 @@
     }
 
     .animate-heads {
-        animation: flipHeads 3s;
+        animation: flipHeads 30s;
         animation-fill-mode: forwards;
     }
 
@@ -44,7 +44,7 @@
         }
 
         to {
-            transform: rotateY(1800deg);
+            transform: rotateY(9000deg);
         }
     }
 
@@ -54,7 +54,7 @@
     }
 
     .animate-tails {
-        animation: flipTails 3s;
+        animation: flipTails 30s;
         animation-fill-mode: forwards;
     }
 
@@ -64,7 +64,7 @@
         }
 
         to {
-            transform: rotateY(1620deg);
+            transform: rotateY(8820deg);
         }
     }
 </style>
@@ -74,7 +74,6 @@
         <div id="heads" class="heads"></div>
         <div id="tails" class="tails"></div>
     </div>
-    <button id="flip">Flip this thing</button>
     <p>Heads: <span id="headsCount">0</span> Tails: <span id="tailsCount">0</span></p>
     <p><span id="status"></span></p>
 </div>
@@ -104,6 +103,7 @@
             tails.innerText = tailsCount;
         }
         status.innerText = result.toUpperCase();
+        flipCoin();
     }
 
     function flipCoin() {
@@ -112,12 +112,12 @@
         const result = random < 0.5 ? 'heads' : 'tails';
         deferFn(function () {
             coin.setAttribute('class', 'animate-' + result);
-            deferFn(processResult.bind(null, result), 2900);
-        }, 100);
+            deferFn(processResult.bind(null, result), 29000);
+        }, 1000);
     }
 
-    button.addEventListener('click', flipCoin);
-
+    // button.addEventListener('click', flipCoin);
+    flipCoin();
 
 
 </script>

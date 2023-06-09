@@ -6,6 +6,15 @@ $connection = mysqli_connect("localhost", "root", "", "coin_flip");
 if (!isset($_SESSION['id'])) {
     header("location: ../../auth/login.php");
 }
+$id = $_SESSION['id'];
+$qry = "select * from users  join user_balance on users.id = user_balance.user_id where users.id = '$id'";
+$run = mysqli_query($connection , $qry);
+$data  = mysqli_fetch_assoc($run);
+$bal = $data['balance'];
+
+if (!strpos($bal , '.')) {
+    $bal = $bal.'.00';
+}
 
 ?>
 
@@ -26,6 +35,11 @@ if (!isset($_SESSION['id'])) {
 
     <link rel="stylesheet" href="../../asset/font-awesome/all.min.css">
     <script src="../../asset/font-awesome/all.min.js"></script>
+
+    <!-- countdown -->
+    <link rel="stylesheet" href="../../asset/css/custom.css">
+
+
 </head>
 
 <body>
@@ -35,14 +49,14 @@ if (!isset($_SESSION['id'])) {
         <div class="card bg-dark text-light m-2">
             <div class="card-body" style="padding: 15px;">
                 <div class="d-flex justify-content-between pb-2">
-                    <div class="balance">
-                        <h5>Available balance</h5>
-                        <h5>₹ 0.00</h5>
+                    <div class="reward ">
+                        <h5>Dear,</h5>
+                        <h5><?php echo  $data['username']?></h5>
                     </div>
-                    <!-- <div class="reward text-right">
-                    <h5>Secondary Balance</h5>
-                    <h5>₹ 0.00</h5>
-                </div> -->
+                    <div class="balance text-right">
+                        <h5>Available balance</h5>
+                        <h5>₹ <?php echo  $bal?></h5>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center pt-2" style="padding: 0px">
                     <a href="/recharge" class="btn btn-success">Recharge</a>
@@ -78,7 +92,16 @@ if (!isset($_SESSION['id'])) {
 
                             <div class="d-flex align-items-center">
                                 <!-- icon -->
-                                <h5>01 02</h5>
+                                <div id="clockdiv">
+                                    <div>
+                                        <span class="minutes"></span>
+                                        <div class="smalltext">Minutes</div>
+                                    </div>
+                                    <div>
+                                        <span class="seconds"></span>
+                                        <div class="smalltext">Seconds</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -100,6 +123,8 @@ if (!isset($_SESSION['id'])) {
     <?php
     include_once('../../layout/footer.php');
     ?>
+
+    <script src="../../asset/js/cusom.js"></script>
 </body>
 
 </html>
